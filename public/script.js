@@ -25,5 +25,8 @@ async function searchJobs() {
   statusDiv.textContent = 'Searching...';
   resultsDiv.innerHTML = '';
 
+  const response = await fetch(`/api/search?${params}`);
+  const data = await response.json();
+  currentJobs = data.jobs || [];
  
 }
