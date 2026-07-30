@@ -8,3 +8,9 @@ form.addEventListener('submit', async (event) => {
   event.preventDefault();
   await searchJobs();
 });
+
+
+
+async function searchJobs() {
+  
+}
