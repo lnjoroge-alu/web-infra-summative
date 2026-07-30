@@ -43,6 +43,15 @@ function showJobs() {
     const title = document.createElement('h2');
     title.textContent = job.job_title;
 
+    const employer = document.createElement('p');
+    employer.className = 'employer';
+    employer.textContent = job.employer_name;
+
+    const meta = document.createElement('p');
+    meta.className = 'meta';
+    const details = [job.job_location, job.job_employment_type, job.job_posted_at];
+    meta.textContent = details.filter(Boolean).join(' | ');
+
     
   }
 }
