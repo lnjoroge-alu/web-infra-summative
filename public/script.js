@@ -70,7 +70,8 @@ function showJobs() {
     apply.rel = 'noopener';
     apply.textContent = 'Apply';
 
-    
+    card.append(title, employer, meta, description, apply);
+    resultsDiv.appendChild(card);
 
   }
 }
