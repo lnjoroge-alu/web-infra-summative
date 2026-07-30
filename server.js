@@ -8,8 +8,13 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/search', async (req, res) => {
-  const { q, location, employment_type, remote, page } = req.query;
+  const { queryTerm, location, employment_type, remote, page } = req.query;
+  
+  if (!queryTerm) {
+    return res.status(400).json({ error: 'Missing search query' });
+  }
 
+  
   
 });
 
