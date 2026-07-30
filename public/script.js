@@ -37,6 +37,12 @@ function showJobs() {
   resultsDiv.innerHTML = '';
 
   for (const job of currentJobs) {
+    const card = document.createElement('div');
+    card.className = 'job-card';
+
+    const title = document.createElement('h2');
+    title.textContent = job.job_title;
+
     
   }
 }
