@@ -58,6 +58,19 @@ function showJobs() {
       badge.textContent = 'Remote';
       meta.prepend(badge);
     }
+    
+    const description = document.createElement('p');
+    description.className = 'description';
+    description.textContent = `${(job.job_description || '').slice(0, 250)}...`;
+
+    const apply = document.createElement('a');
+    apply.className = 'apply';
+    apply.href = job.job_apply_link;
+    apply.target = '_blank';
+    apply.rel = 'noopener';
+    apply.textContent = 'Apply';
+
+    
 
   }
 }
