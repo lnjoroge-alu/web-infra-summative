@@ -26,6 +26,13 @@ app.get('/api/search', async (req, res) => {
         'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
       }
     });
+    
+    if (!response.ok) {
+      return res.status(502).json({ error: `Job API returned status ${response.status}` });
+    }
+
+    const data = await response.json();
+    res.json({ jobs: data.data || [] });
 
   } catch (err) {
     console.error(err);
