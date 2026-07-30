@@ -5,6 +5,9 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const cache = new Map();
+const CACHE_TTL = 10 * 60 * 1000;
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/search', async (req, res) => {
@@ -18,6 +21,12 @@ app.get('/api/search', async (req, res) => {
   const params = new URLSearchParams({ query, num_pages: '1' });
   if (employment_type) params.set('employment_types', employment_type);
   if (remote === 'true') params.set('work_from_home', 'true');
+
+  const cacheKey = params.toString();
+  const cached = cache.get(cacheKey);
+  if (cached && Date.now() - cached.time < CACHE_TTL) {
+    return res.json({ jobs: cached.jobs });
+  }
 
   try {
     const response = await fetch(`https://${process.env.RAPIDAPI_HOST}/search-v2?${params}`, {
@@ -33,6 +42,7 @@ app.get('/api/search', async (req, res) => {
 
     const data = await response.json();
     const results = data.data ? data.data.jobs : [];
+    cache.set(cacheKey, { jobs: results || [], time: Date.now() });
     res.json({ jobs: results || [] });
 
   } catch (err) {
