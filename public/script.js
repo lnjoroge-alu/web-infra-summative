@@ -1,6 +1,9 @@
 const form = document.getElementById('search-form');
 const statusDiv = document.getElementById('status');
 const resultsDiv = document.getElementById('results');
+const sortSelect = document.getElementById('sort-by');
+
+sortSelect.addEventListener('change', showJobs);
 
 let currentJobs = [];
 
@@ -36,7 +39,12 @@ async function searchJobs() {
 function showJobs() {
   resultsDiv.innerHTML = '';
 
-  for (const job of currentJobs) {
+  const jobs = [...currentJobs];
+  if (sortSelect.value === 'date') {
+    jobs.sort((a, b) => (b.job_posted_at_timestamp || 0) - (a.job_posted_at_timestamp || 0));
+  }
+
+  for (const job of jobs) {
     const card = document.createElement('div');
     card.className = 'job-card';
 
