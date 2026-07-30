@@ -32,7 +32,8 @@ app.get('/api/search', async (req, res) => {
     }
 
     const data = await response.json();
-    res.json({ jobs: data.data || [] });
+    const results = data.data ? data.data.jobs : [];
+    res.json({ jobs: results || [] });
 
   } catch (err) {
     console.error(err);
