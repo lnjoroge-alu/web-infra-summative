@@ -17,5 +17,10 @@ async function searchJobs() {
   const employmentType = document.getElementById('employment-type').value;
   const remoteOnly = document.getElementById('remote-only').checked;
 
+  const params = new URLSearchParams({ queryTerm });
+  if (location) params.set('location', location);
+  if (employmentType) params.set('employment_type', employmentType);
+  if (remoteOnly) params.set('remote', 'true');
+
  
 }
