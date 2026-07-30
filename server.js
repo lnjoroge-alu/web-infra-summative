@@ -8,22 +8,22 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/api/search', async (req, res) => {
-  const { queryTerm, location, employment_type, remote, page } = req.query;
-  
+  const { queryTerm, location, employment_type, remote } = req.query;
+
   if (!queryTerm) {
     return res.status(400).json({ error: 'Missing search query' });
   }
 
   const query = location ? `${queryTerm} in ${location}` : queryTerm;
-  const params = new URLSearchParams({ query, page: page || '1', num_pages: '1' });
+  const params = new URLSearchParams({ query, num_pages: '1' });
   if (employment_type) params.set('employment_types', employment_type);
   if (remote === 'true') params.set('work_from_home', 'true');
 
   try {
-    const response = await fetch(`https://jsearch.p.rapidapi.com/search?${params}`, {
+    const response = await fetch(`https://${process.env.RAPIDAPI_HOST}/search-v2?${params}`, {
       headers: {
         'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
-        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+        'X-RapidAPI-Host': process.env.RAPIDAPI_HOST
       }
     });
     
