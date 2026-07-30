@@ -29,6 +29,51 @@ main {
   padding: 1.5rem 1rem;
 }
 
+#search-form {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#search-form input {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+#search-form button {
+  padding: 0.6rem 1.5rem;
+  background: #1b3a5c;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+#search-form button:hover {
+  background: #2c567f;
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.controls select {
+  margin-left: 0.3rem;
+  padding: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 footer {
   text-align: center;
   padding: 1.5rem;
