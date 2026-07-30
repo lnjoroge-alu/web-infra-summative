@@ -26,14 +26,28 @@ async function searchJobs() {
   if (remoteOnly) params.set('remote', 'true');
 
   statusDiv.textContent = 'Searching...';
+  statusDiv.classList.remove('error');
   resultsDiv.innerHTML = '';
 
-  const response = await fetch(`/api/search?${params}`);
-  const data = await response.json();
-  currentJobs = data.jobs || [];
+  try {
+    const response = await fetch(`/api/search?${params}`);
+    const data = await response.json();
 
-  statusDiv.textContent = `${currentJobs.length} jobs found`;
-  showJobs();
+    if (!response.ok) {
+      throw new Error(data.error || 'Something went wrong');
+    }
+
+    currentJobs = data.jobs || [];
+    statusDiv.textContent = currentJobs.length
+      ? `${currentJobs.length} jobs found`
+      : 'No jobs found, try a different search';
+    showJobs();
+  } catch (err) {
+    statusDiv.textContent = err.message === 'Failed to fetch'
+      ? 'Could not reach the server, please try again'
+      : err.message;
+    statusDiv.classList.add('error');
+  }
 }
 
 function showJobs() {
