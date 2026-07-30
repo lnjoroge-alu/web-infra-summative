@@ -34,5 +34,9 @@ async function searchJobs() {
 }
 
 function showJobs() {
-  
+  resultsDiv.innerHTML = '';
+
+  for (const job of currentJobs) {
+    
+  }
 }
