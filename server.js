@@ -14,6 +14,11 @@ app.get('/api/search', async (req, res) => {
     return res.status(400).json({ error: 'Missing search query' });
   }
 
+  const query = location ? `${queryTerm} in ${location}` : queryTerm;
+  const params = new URLSearchParams({ query, page: page || '1', num_pages: '1' });
+  if (employment_type) params.set('employment_types', employment_type);
+  if (remote === 'true') params.set('work_from_home', 'true');
+
   
   
 });
