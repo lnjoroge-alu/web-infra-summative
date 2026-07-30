@@ -52,6 +52,12 @@ function showJobs() {
     const details = [job.job_location, job.job_employment_type, job.job_posted_at];
     meta.textContent = details.filter(Boolean).join(' | ');
 
-    
+    if (job.job_is_remote) {
+      const badge = document.createElement('span');
+      badge.className = 'badge';
+      badge.textContent = 'Remote';
+      meta.prepend(badge);
+    }
+
   }
 }
