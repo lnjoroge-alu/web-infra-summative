@@ -19,7 +19,18 @@ app.get('/api/search', async (req, res) => {
   if (employment_type) params.set('employment_types', employment_type);
   if (remote === 'true') params.set('work_from_home', 'true');
 
-  
+  try {
+    const response = await fetch(`https://jsearch.p.rapidapi.com/search?${params}`, {
+      headers: {
+        'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
+        'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+      }
+    });
+
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not reach the job API' });
+  }
   
 });
 
