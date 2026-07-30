@@ -12,7 +12,40 @@
     <p class="tagline">Search real jobs and internships from across the web</p>
   </header>
 
-  
+  <main>
+    <form id="search-form">
+      <input type="text" id="query" placeholder="Job title, e.g. software developer" required>
+      <input type="text" id="location" placeholder="Location (optional), e.g. Kigali">
+      <button type="submit">Search</button>
+    </form>
+
+    <div class="controls">
+      <label>
+        Type
+        <select id="employment-type">
+          <option value="">All types</option>
+          <option value="FULLTIME">Full-time</option>
+          <option value="PARTTIME">Part-time</option>
+          <option value="INTERN">Internship</option>
+          <option value="CONTRACTOR">Contract</option>
+        </select>
+      </label>
+      <label>
+        <input type="checkbox" id="remote-only"> Remote only
+      </label>
+      <label>
+        Sort by
+        <select id="sort-by">
+          <option value="relevance">Relevance</option>
+          <option value="date">Newest first</option>
+        </select>
+      </label>
+    </div>
+
+    <div id="status"></div>
+    <div id="results"></div>
+  </main>
+
   <footer>
     <p>Job data provided by the <a href="https://rapidapi.com/letscrape-6bRBa3QguO5/api/jsearch" target="_blank" rel="noopener">JSearch API</a></p>
   </footer>
