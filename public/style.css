@@ -74,6 +74,69 @@ main {
   border-radius: 4px;
 }
 
+#status {
+  margin: 1rem 0;
+  color: #555;
+}
+
+#status.error {
+  color: #b00020;
+}
+
+.job-card {
+  background: #fff;
+  border: 1px solid #e0e4e8;
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.job-card h2 {
+  font-size: 1.1rem;
+  color: #1b3a5c;
+}
+
+.job-card .employer {
+  font-weight: 600;
+  margin: 0.2rem 0;
+}
+
+.job-card .meta {
+  font-size: 0.85rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.job-card .description {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 0.7rem;
+}
+
+.job-card a.apply {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: #1b3a5c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.job-card a.apply:hover {
+  background: #2c567f;
+}
+
+.badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #1b3a5c;
+  border-radius: 3px;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  margin-right: 0.4rem;
+}
+
 footer {
   text-align: center;
   padding: 1.5rem;
