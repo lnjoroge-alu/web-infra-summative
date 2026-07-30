@@ -30,5 +30,9 @@ async function searchJobs() {
   currentJobs = data.jobs || [];
 
   statusDiv.textContent = `${currentJobs.length} jobs found`;
- 
+  showJobs();
+}
+
+function showJobs() {
+  
 }
