@@ -22,5 +22,8 @@ async function searchJobs() {
   if (employmentType) params.set('employment_type', employmentType);
   if (remoteOnly) params.set('remote', 'true');
 
+  statusDiv.textContent = 'Searching...';
+  resultsDiv.innerHTML = '';
+
  
 }
