@@ -58,7 +58,15 @@ async function loadSalary(jobTitle, location) {
   const params = new URLSearchParams({ job_title: jobTitle });
   if (location) params.set('location', location);
 
-  
+  try {
+    const response = await fetch(`/api/salary?${params}`);
+    const data = await response.json();
+    if (!response.ok || !data.salary) return;
+
+    
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function showJobs() {
