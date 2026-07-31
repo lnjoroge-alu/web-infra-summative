@@ -52,6 +52,10 @@ app.get('/api/search', async (req, res) => {
   
 });
 
+app.get('/api/salary', async (req, res) => {
+  
+});
+
 app.listen(PORT, () => {
   console.log(`Job Finder running on http://localhost:${PORT}`);
 });
