@@ -6,7 +6,7 @@ Searching for a job usually means checking many different sites. Job Finder solv
 
 ## Assignment Resources
 
-- **Demo video:** 
+- **Demo video:** [Link to Demo Video](https://youtu.be/GmpPV6DcPp4)
 - **Deployed app:** [https://www.lnjoroge.tech](https://www.lnjoroge.tech)
 
 | Server | Address |
