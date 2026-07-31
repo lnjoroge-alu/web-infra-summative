@@ -68,7 +68,26 @@ app.get('/api/salary', async (req, res) => {
     return res.json({ salary: cached.salary });
   }
 
-  
+  try {
+    const response = await fetch(`https://${process.env.RAPIDAPI_HOST}/estimated-salary?${params}`, {
+      headers: {
+        'X-RapidAPI-Key': process.env.RAPIDAPI_KEY,
+        'X-RapidAPI-Host': process.env.RAPIDAPI_HOST
+      }
+    });
+
+    if (!response.ok) {
+      return res.status(502).json({ error: `Salary API returned status ${response.status}` });
+    }
+
+    const data = await response.json();
+    const salary = data.data && data.data.length ? data.data[0] : null;
+    cache.set(cacheKey, { salary, time: Date.now() });
+    res.json({ salary });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Could not reach the salary API' });
+  }
 });
 
 app.listen(PORT, () => {
