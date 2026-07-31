@@ -79,6 +79,16 @@ main {
   color: #555;
 }
 
+#salary-panel {
+  background: #fff8e6;
+  border: 1px solid #e8d9a8;
+  border-radius: 6px;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+
 #status.error {
   color: #b00020;
 }
