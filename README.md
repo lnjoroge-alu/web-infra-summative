@@ -174,7 +174,7 @@ listen balancer
 Each web server adds its own `X-Served-By` header, so repeated requests through the load balancer show the traffic alternating:
 
 ```bash
-$ for i in 1 2 3 4 5 6; do curl -sk -I https://www.lnjoroge.tech/ | grep -i x-served; done
+$ 	curl -Is https://www.lnjoroge.tech
 x-served-by: 7119-web-02
 x-served-by: 7119-web-01
 
