@@ -63,6 +63,12 @@ async function loadSalary(jobTitle, location) {
     const data = await response.json();
     if (!response.ok || !data.salary) return;
 
+    const s = data.salary;
+    const format = (n) => Math.round(n).toLocaleString();
+    const period = (s.salary_period || '').toLowerCase();
+
+    salaryPanel.innerHTML = '';
+
     
   } catch (err) {
     console.error(err);
