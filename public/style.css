@@ -88,6 +88,19 @@ main {
   font-size: 0.95rem;
 }
 
+#salary-panel .salary-median {
+  font-weight: 700;
+  color: #1b3a5c;
+}
+
+#salary-panel .salary-source {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.hidden {
+  display: none;
+}
 
 #status.error {
   color: #b00020;
