@@ -62,6 +62,12 @@ app.get('/api/salary', async (req, res) => {
   const params = new URLSearchParams({ job_title });
   if (location) params.set('location', location);
 
+  const cacheKey = `salary:${params.toString()}`;
+  const cached = cache.get(cacheKey);
+  if (cached && Date.now() - cached.time < CACHE_TTL) {
+    return res.json({ salary: cached.salary });
+  }
+
   
 });
 
