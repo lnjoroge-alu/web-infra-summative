@@ -53,6 +53,15 @@ app.get('/api/search', async (req, res) => {
 });
 
 app.get('/api/salary', async (req, res) => {
+  const { job_title, location } = req.query;
+
+  if (!job_title) {
+    return res.status(400).json({ error: 'Missing job title' });
+  }
+
+  const params = new URLSearchParams({ job_title });
+  if (location) params.set('location', location);
+
   
 });
 
