@@ -2,6 +2,7 @@ const form = document.getElementById('search-form');
 const statusDiv = document.getElementById('status');
 const resultsDiv = document.getElementById('results');
 const sortSelect = document.getElementById('sort-by');
+const salaryPanel = document.getElementById('salary-panel');
 
 sortSelect.addEventListener('change', showJobs);
 
@@ -42,12 +43,22 @@ async function searchJobs() {
       ? `${currentJobs.length} jobs found`
       : 'No jobs found, try a different search';
     showJobs();
+    loadSalary(queryTerm, location);
   } catch (err) {
     statusDiv.textContent = err.message === 'Failed to fetch'
       ? 'Could not reach the server, please try again'
       : err.message;
     statusDiv.classList.add('error');
   }
+}
+
+async function loadSalary(jobTitle, location) {
+  salaryPanel.classList.add('hidden');
+
+  const params = new URLSearchParams({ job_title: jobTitle });
+  if (location) params.set('location', location);
+
+  
 }
 
 function showJobs() {
