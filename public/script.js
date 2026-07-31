@@ -69,7 +69,23 @@ async function loadSalary(jobTitle, location) {
 
     salaryPanel.innerHTML = '';
 
-    
+    const heading = document.createElement('p');
+    heading.textContent = `Typical salary for ${s.job_title} in ${s.location}: `;
+
+    const median = document.createElement('span');
+    median.className = 'salary-median';
+    median.textContent = `${format(s.median_salary)} ${s.salary_currency} per ${period}`;
+    heading.appendChild(median);
+
+    const range = document.createElement('p');
+    range.textContent = `Range: ${format(s.min_salary)} - ${format(s.max_salary)} ${s.salary_currency}`;
+
+    const source = document.createElement('p');
+    source.className = 'salary-source';
+    source.textContent = `Source: ${s.publisher_name}, based on ${s.salary_count} reported salaries`;
+
+    salaryPanel.append(heading, range, source);
+    salaryPanel.classList.remove('hidden');
   } catch (err) {
     console.error(err);
   }
